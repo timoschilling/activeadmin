@@ -14,6 +14,7 @@ module ActiveAdmin
 
       included do
         define_active_admin_callbacks :build, :create, :update, :save, :destroy
+        delegate :max_per_page, :max_csv_records, to: :config
       end
 
       protected
@@ -269,18 +270,11 @@ module ActiveAdmin
       end
 
       def per_page
+        debugger
         return max_csv_records if request.format == 'text/csv'
         return max_per_page if active_admin_config.paginate == false
 
         @per_page || active_admin_config.per_page
-      end
-
-      def max_csv_records
-        10_000
-      end
-
-      def max_per_page
-        10_000
       end
 
     end
