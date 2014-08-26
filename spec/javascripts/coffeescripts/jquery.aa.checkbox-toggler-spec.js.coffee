@@ -13,6 +13,7 @@ describe "ActiveAdmin.CheckboxToggler", ->
 
   describe "on init", ->
     it "should raise an error if container not found", ->
+      throw "ERROR"
       expect( => new ActiveAdmin.CheckboxToggler({}) ).toThrow("Container element not found")
 
     it "should raise an error if 'toggle all' checkbox not found", ->
