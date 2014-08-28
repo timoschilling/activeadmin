@@ -105,6 +105,11 @@ describe ActiveAdmin::Dependency do
         expect(k['a-b'] == '1.2.3').to eq true
         expect(k['a-b'] == '1.2'  ).to eq false
         expect(k['a-b'] == 1      ).to eq false
+        expect(k['a-b'] == '~> 1.2.1'    ).to eq true
+        expect(k['a-b'] == '~> 1.2.4'    ).to eq false
+        expect(k['a-b'] == '~> 1.2'    ).to eq true
+        expect(k['a-b'] == '~> 1'    ).to eq true
+        expect(k['a-b'] == '~> 2'    ).to eq false
       end
       it '>' do
         expect(k['a-b'] > 1).to eq true

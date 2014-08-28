@@ -61,6 +61,7 @@ module ActiveAdmin
       def match?(*reqs)
         !!@spec && Gem::Requirement.create(reqs).satisfied_by?(@spec.version)
       end
+      alias_method :==, :match?
 
       def match!(*reqs)
         unless @spec
